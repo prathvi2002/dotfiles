@@ -77,7 +77,6 @@ return {
           none_ls.builtins.diagnostics.mypy.with {
             -- you can find the extra_args that can be used with mypy by typing "mypy --help" in terminal
             extra_args = {
-              "--ignore-missing-imports",
               "--show-column-numbers",
               "--python-executable=" .. _G.python_path, -- Set your Python interpreter
             },

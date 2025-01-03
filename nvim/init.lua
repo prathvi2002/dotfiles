@@ -1,5 +1,6 @@
 -- Set Python path as a global variable
-_G.python_path = "/home/ishu/virtualenvs/django-venv/bin/python" -- Replace with your desired path
+-- _G.python_path = "/home/ishu/virtualenvs/django-venv/bin/python" -- Replace with your desired path
+_G.python_path = "/usr/bin/python" -- Replace with your desired path
 
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "

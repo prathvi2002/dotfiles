@@ -44,7 +44,10 @@ lspconfig.pylsp.setup {
         pydocstyle = { enabled = false }, -- Disable pydocstyle for docstring style checking
         autopep8 = { enabled = false }, -- Disable autopep8 for code formatting
         yapf = { enabled = false }, -- Disable YAPF for code formatting
-        flake8 = { enabled = false }, -- Disable flake8 for error checking
+        flake8 = { 
+          enabled = true,
+          ignore = { "E901", "E902", "E999" }
+        }, -- Disable flake8 for error checking
         pylint = { enabled = false }, -- Disable pylint for linting (can be enabled as needed)
       },
     },
