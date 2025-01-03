@@ -75,6 +75,7 @@ return {
       none_ls.setup {
         sources = {
           none_ls.builtins.diagnostics.mypy.with {
+            -- you can find the extra_args that can be used with mypy by typing "mypy --help" in terminal
             extra_args = {
               "--ignore-missing-imports",
               "--show-column-numbers",
