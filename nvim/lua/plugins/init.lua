@@ -21,10 +21,6 @@ return {
     },
   },
 
-  -- {
-  --   "microsoft/python-type-stubs",
-  -- },
-
   {
     "lukas-reineke/indent-blankline.nvim",
     enabled = false,
@@ -69,8 +65,6 @@ return {
     config = function()
       local none_ls = require "null-ls"
 
-      -- local python_path = "/home/ishu/virtualenvs/django-venv/bin/python" -- Adjust this as needed for your virtual environment
-
       -- Configure none-ls
       none_ls.setup {
         sources = {
@@ -84,5 +78,9 @@ return {
         },
       }
     end,
+  },
+
+  {
+    "voldikss/vim-floaterm",
   },
 }

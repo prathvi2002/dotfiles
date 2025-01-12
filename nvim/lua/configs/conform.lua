@@ -4,6 +4,9 @@ local options = {
     css = { "prettier" },
     html = { "prettier" },
     python = { "black" },
+    sh = { "shfmt" },
+    zsh = { "beautysh" },
+    c = { "clang-format" },
   },
 
   -- format_on_save = {

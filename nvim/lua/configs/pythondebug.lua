@@ -1,5 +1,46 @@
 local dap = require "dap"
+
+-- Define the Python debugger adapter
+dap.adapters.python = {
+  type = "executable",
+  command = _G.python_path or "python", -- Path to Python interpreter
+  args = { "-m", "debugpy.adapter" },
+}
+
+-- Define the debug configuration
+dap.configurations.python = {
+  {
+    type = "python",
+    request = "launch",
+    name = "Launch file",
+    program = "${file}", -- This will debug the currently open file
+    pythonPath = _G.python_path or "python", -- Path to Python interpreter
+    justMyCode = false, -- Explicitly disable skipping library code
+  },
+}
+
 local dapui = require "dapui"
+
+vim.fn.sign_define("DapBreakpoint", {
+  text = "",
+  texthl = "DiagnosticSignError",
+  linehl = "",
+  numhl = "",
+})
+
+vim.fn.sign_define("DapBreakpointRejected", {
+  text = "", -- or "❌"
+  texthl = "DiagnosticSignError",
+  linehl = "",
+  numhl = "",
+})
+
+vim.fn.sign_define("DapStopped", {
+  text = "", -- or "→"
+  texthl = "DiagnosticSignWarn",
+  linehl = "Visual",
+  numhl = "DiagnosticSignWarn",
+})
 
 -- DAP UI setup
 dapui.setup()
@@ -21,7 +62,12 @@ require("mason-nvim-dap").setup {
   automatic_setup = true,
 }
 
-require("dap-python").setup "/usr/bin/python" -- Update the Python path as needed
+-- Define the path to the Python interpreter to be used
+local python_path = _G.python_path -- Adjust this as needed for your virtual environment
+
+require("dap-python").setup(python_path, {
+  -- justMyCode = false, -- Disable skipping library code
+})
 
 -- Debugging Keymaps
 vim.keymap.set("n", "<F5>", dap.continue, { desc = "Debug: Start/Continue" })
@@ -36,5 +82,5 @@ vim.keymap.set("n", "<F6>", function()
   dap.clear_breakpoints()
 end, { desc = "Debug: Clear All Breakpoints" })
 vim.keymap.set("n", "<F7>", dapui.toggle, { desc = "Debug: Toggle DAP UI" })
-
+--
 return {}

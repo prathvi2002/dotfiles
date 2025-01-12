@@ -5,6 +5,10 @@ _G.python_path = "/usr/bin/python" -- Replace with your desired path
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
 
+vim.cmd [[
+	set ma
+]]
+
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 

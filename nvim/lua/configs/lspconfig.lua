@@ -4,7 +4,7 @@ require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require "lspconfig"
 
 -- EXAMPLE
-local servers = { "html", "cssls", "lua_ls" }
+local servers = { "html", "cssls", "lua_ls", "clangd" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- lsps with default config
@@ -39,15 +39,15 @@ lspconfig.pylsp.setup {
         -- Disable plugins that provide additional features or tools
         rope_completion = { enabled = false }, -- Disable Rope for completions and renaming
         pyflakes = { enabled = false }, -- Disable Pyflakes linter
-        mccabe = { enabled = false }, -- Disable McCabe linter for complexity checking
+        mccabe = { enabled = true }, -- Disable McCabe linter for complexity checking
         pycodestyle = { enabled = false }, -- Disable pycodestyle for style checking
         pydocstyle = { enabled = false }, -- Disable pydocstyle for docstring style checking
         autopep8 = { enabled = false }, -- Disable autopep8 for code formatting
         yapf = { enabled = false }, -- Disable YAPF for code formatting
-        flake8 = { 
-          enabled = true,
-          ignore = { "E901", "E902", "E999" }
-        }, -- Disable flake8 for error checking
+        flake8 = {
+          enabled = true, -- Disable flake8 for error checking
+          ignore = { "E901", "E902", "E999", "F821" }
+        },
         pylint = { enabled = false }, -- Disable pylint for linting (can be enabled as needed)
       },
     },
