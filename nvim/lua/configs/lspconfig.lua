@@ -46,6 +46,7 @@ lspconfig.pylsp.setup {
         yapf = { enabled = false }, -- Disable YAPF for code formatting
         flake8 = {
           enabled = true, -- Disable flake8 for error checking
+          -- List of error codes (https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes)
           ignore = { "E901", "E902", "E999", "F821" }
         },
         pylint = { enabled = false }, -- Disable pylint for linting (can be enabled as needed)
