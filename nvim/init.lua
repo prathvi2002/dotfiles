@@ -52,4 +52,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
-
+-- Display line numbers AND relative line numbers together
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.statuscolumn = "%=%{v:lnum} %{v:relnum} "
