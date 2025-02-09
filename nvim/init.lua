@@ -64,7 +64,6 @@ vim.opt.statuscolumn = "%=%{v:lnum} %{v:relnum} "
 -- vim.opt.relativenumber = true
 -- vim.opt.statuscolumn = "%=%{v:lnum} %{v:relnum} "
 
-
 -- Toggle display line numbers AND relative line numbers together
 -- While debugging python code, turn off with toggle (rr) this for being able to see the breakpoints marks
 function ToggleLineNumbers()
