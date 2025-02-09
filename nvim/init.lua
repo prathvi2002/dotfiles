@@ -56,3 +56,34 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.statuscolumn = "%=%{v:lnum} %{v:relnum} "
+
+
+-- -- Display line numbers AND relative line numbers together
+-- -- While debugging python code, turn off with toggle (rn) this for being able to see the breakpoints marks
+-- vim.opt.number = true
+-- vim.opt.relativenumber = true
+-- vim.opt.statuscolumn = "%=%{v:lnum} %{v:relnum} "
+
+
+-- Toggle display line numbers AND relative line numbers together
+-- While debugging python code, turn off with toggle (rr) this for being able to see the breakpoints marks
+function ToggleLineNumbers()
+  if vim.opt.relativenumber:get() then
+    -- Enable debugging mode:
+    -- Show only absolute line numbers (for better breakpoint visibility)
+    vim.opt.number = true
+    vim.opt.relativenumber = false
+    -- Reset status column to default (Neovim handles it automatically)
+    vim.opt.statuscolumn = ""
+  else
+    -- Enable normal mode:
+    -- Show both absolute and relative line numbers
+    vim.opt.number = true
+    vim.opt.relativenumber = true
+    -- Set a custom status column to display absolute & relative numbers together
+    vim.opt.statuscolumn = "%=%{v:lnum} %{v:relnum} "
+  end
+end
+
+-- Call the function at startup so by default both absolute and relative line numbers are set (optional)
+ToggleLineNumbers()
